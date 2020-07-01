@@ -1,0 +1,16 @@
+# docker version
+version: "3"
+
+services:
+  app:
+    build:
+      context: .
+    #maps port from local machine to docker machine
+    ports:
+      - "8000:8000"
+    #to update project code in docker container with local machine code
+    volumes:
+      - ./app:/app
+    #command to run our application in docker container
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
