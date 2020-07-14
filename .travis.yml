@@ -1,0 +1,14 @@
+language: python
+python:
+  - "3.6"
+
+services:
+  - docker
+
+# before script which will run before it executes any of the automation command
+
+before-script: pip install docker-compose
+
+
+script:
+  - docker-compose run app sh -c "python manage.py test && flake8"
